@@ -5,7 +5,7 @@ interface FetchProps {
 }
 
 const useFetch = (props: FetchProps) => {
-  const [resp, setResp] = useState([]);
+  const [resp, setResp]: [any, any] = useState([]);
   const {url} = props;
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const useFetch = (props: FetchProps) => {
     }
     getApi();
   }, [url]);
-
+  
   return {resp};
 }
 

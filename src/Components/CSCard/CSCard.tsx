@@ -2,17 +2,18 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const CSCard = (props: any) => {
-    const { title='', description='', cover_image='' } = props.bookData;
+    const { title='', description='', images='' } = props.productData;
     return (
-        <Card sx={{ maxWidth: 345 }}>
+        <Card sx={{ maxWidth: 345 }} onClick={props.onClick}>
             <CardMedia
-                sx={{ height: 140 }}
-                image={cover_image}
+                component="img"
+                sx={{ height: 300 }}
+                image={images[0]}
                 title={title}
+                loading="lazy"
             />
             <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -23,8 +24,7 @@ const CSCard = (props: any) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Share</Button>
-                <Button size="small">Learn More</Button>
+                {props.children}
             </CardActions>
         </Card>
     );
